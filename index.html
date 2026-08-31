@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fazendinha do Cay</title>
+    <link rel="stylesheet" href="./farm.css">
+</head>
+<body>
+    
+    <h1>Fazendinha do Cay</h1>
+    <p>Gerencie sua propria fazendinha</p>
+    
+    <hr/>
+
+    <p>Voce tem <img src="https://static.wikia.nocookie.net/plantsvszombies/images/a/a2/Projectile_star.png/revision/latest?cb=20110331121916" width="25px"> <strong id="textoDinheiro" >0</strong></p>
+
+    <hr/>
+
+    <div class="deck">
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/plantsvszombies/images/7/7a/Sprout1.png/revision/latest?cb=20181006120416"/>
+            <h2>Nome</h2>
+            <p>Tempo restante</p>
+            <button>Colher</button>
+            <hr/>
+            <p>compra de sementes</p>
+            <button>Girasol</button>
+            <button>Dispara ervilha</button>
+            <button>Abobora</button>
+            <button>Chomper</button>
+            <button>Noz Escudo</button>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/plantsvszombies/images/8/87/Giant_Sunflower1.png/revision/latest?cb=20250305125505"/>
+            <h2 id="giraSol">planta</h2>
+            <p  id="tempoGirasol">Tempo restante</p>
+            <button>Colher</button>
+            <hr/>
+            <p>compra de sementes</p>
+            <button onclick="comprar('girasol')">Girasol</button>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/plantsvszombies/images/9/9c/Repeater1.png/revision/latest?cb=20090521220801"/>
+            <h2>planta</h2>
+            <p>Tempo restante</p>
+            <button>Colher</button>
+            <hr/>
+            <p>compra de sementes</p>
+            <button>Dispara ervilha</button>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/plantsvszombies/images/1/10/Squash1.png/revision/latest?cb=20090521221004"/>
+            <h2>planta</h2>
+            <p>Tempo restante</p>
+            <button>Colher</button>
+            <hr/>
+            <p>compra de sementes</p>
+            <button>Abobora</button>
+        </div>
+
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/plantsvszombies/images/a/a3/Chomper1.png/revision/latest?cb=20090521220057"/>
+            <h2>planta</h2>
+            <p>Tempo restante</p>
+            <button>Colher</button>
+            <hr/>
+            <p>compra de sementes</p>
+            <button>Chomper</button>
+        </div>
+        
+        <div class="card">
+            <img src="https://static.wikia.nocookie.net/plantsvszombies/images/c/c0/Wall-nut1.png/revision/latest?cb=20090521221605"/>
+            <h2>planta</h2>
+            <p>Tempo restante</p>
+            <button>Colher</button>
+            <hr/>
+            <p>compra de sementes</p>
+            <button>Noz Escudo</button>
+        </div>
+
+    </div>
+
+    <script>
+        let dinheiro = 0
+        addDinheiro(100)
+        timer()
+
+        let planta_comprada = null 
+        
+        
+        let girasol = {
+            nome: "Girasol",
+            custo: 25,
+            lucro: 75,
+            tempo: 10
+        } 
+
+        let disparaervilha = {
+            nome: "Dispara-Ervilha",
+            custo: 150,
+            lucro: 300,
+            tempo: 30
+        }
+        
+        let abobora = {
+            nome: "Abobora",
+            custo: 600,
+            lucro: 1200,
+            tempo: 60
+        } 
+
+        let chomper = {
+            nome: "Chomper",
+            custo: 2400,
+            lucro: 5000,
+            tempo: 120
+        } 
+
+        let noz = {
+            nome: "Noz-Escudo",
+            custo: 10000,
+            lucro: 20000,
+            tempo: 150
+        } 
+
+
+        
+
+        function addDinheiro(valor){
+            dinheiro += valor
+            document.getElementById("textoDinheiro").innerHTML = dinheiro
+        }
+
+        function comprar(giraSol){
+
+            if (planta_comprada != null){
+                alert("Voce nao pode comprar agora...")
+                return
+            }
+
+            if (dinheiro < girasol.custo){
+            alert("Voce não tem dinheiro o suficiente para a compra")
+            return
+            }
+
+            document.getElementById("giraSol").innerHTML = girasol.nome
+            document.getElementById("tempoGirasol").innerHTML = girasol.tempo
+
+            addDinheiro(-girasol.custo)
+            
+            planta_comprada = structuredClone(girasol)       //deep clone 
+        
+        }
+
+        function atualizarPlantas(){
+
+        }
+
+        function timer(){
+
+            setTimeout(() => {
+                atualizarPlantas()
+                console.log("OI")
+                timer()  //looping infinito
+            }, 1000);
+
+        }
+
+    </script>
+
+</body>
+</html>
