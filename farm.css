@@ -12,9 +12,13 @@ body{
 .card{
     width: 200px;
     border-radius: 20px;
-    box-shadow: 2px 3px 5px gray;
+    box-shadow: 2px 3px 3px #018f4c;
     padding: 20px;
     text-align: center;
+}
+
+.card progress{
+    accent-color: #a2db06
 }
 
 .card h2{
