@@ -6,7 +6,7 @@ body{
 
 .deck{
     display: flex;
-    gap: 95px;
+    gap: 175px;
 }
 
 .card{
@@ -24,4 +24,16 @@ body{
 .card button{
     width: 100%;
     margin-bottom: 8px;
+}
+
+.loja button{
+    background-color: #2aa146;
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+.card button{
+    background-color: #2aa146;
+    color: aliceblue;
+    border-radius: 25px;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fazendinha do Cay</title>
-    <link rel="stylesheet" href="./teste.css">
+    <link rel="stylesheet" href="./farm.css">
 </head>
 <body>
     
@@ -13,87 +13,92 @@
     
     <hr/>
 
-    <p>Voce tem <img src="https://static.wikia.nocookie.net/plantsvszombies/images/a/a2/Projectile_star.png/revision/latest?cb=20110331121916" width="25px"> <strong id="textoDinheiro">0</strong></p>
+    <p>Voce tem <img src="https://static.wikia.nocookie.net/plantsvszombies/images/a/a2/Projectile_star.png/revision/latest?cb=20110331121916" width="25px"> 
+        <strong id="textoDinheiro">0</strong></p>
 
     <hr/>
 
+    <!--- SEÇÃO DA LOJA --->
+    <div class="loja">
+        <h2>Loja de Sementes</h2>
+        <p>Compre sementes para plantar nos seus terrenos:</p>
+        <button onclick="comprar1('girasol')">Girasol (25)</button>
+        <button onclick="comprar2('disparaervilha')">Dispara-Ervilha (150)</button>
+        <button onclick="comprar3('abobora')">Abobora (600)</button>
+        <button onclick="comprar4('chomper')">Chomper (2400)</button>
+        <button onclick="comprar5('noz')">Noz-Escudo (10000)</button>
+    </div>
+
+    <hr/>
+
+    <!--- ÁREA DOS CARDS DE TERRENO --->
     <div class="deck">
 
-        <!-- Card 1: Base -->
-        <div class="card">
-            <img src="https://static.wikia.nocookie.net/plantsvszombies/images/7/7a/Sprout1.png/revision/latest?cb=20181006120416"/>
-            <h2>Canteiro Modelo</h2>
-            <p>Selecione uma semente</p>
-            <button disabled>Colher</button>
-            <hr/>
-            <p>compra de sementes</p>
-            <button onclick="comprar1('girasol')">Girasol</button>
-            <button onclick="comprar2('disparaervilha')">Dispara ervilha</button>
-            <button onclick="comprar3('abobora')">Abobora</button>
-            <button onclick="comprar4('chomper')">Chomper</button>
-            <button onclick="comprar5('noz')">Noz Escudo</button>
-        </div>
-
-        <!-- Card 2: Girassol -->
-        <div class="card">
+        <!--- Card 1: Girassol --->
+        <div id="card1" class="card" style="display: none;">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/8/87/Giant_Sunflower1.png/revision/latest?cb=20250305125505"/>
             <h2 id="Sol">Terreno Vazio</h2>
             <p id="tempoGirasol">Plante novas plantas</p>
+            <progress id="barraGirasol" value="0" max="100" style="width: 80%; margin-bottom: 8px;"></progress>
             <button onclick="colher1()">Colher</button>
             <hr/>
             <p>compra de sementes</p>
             <button onclick="comprar1('girasol')">Girasol</button>
         </div>
 
-        <!-- Card 3: Dispara-ervilha -->
-        <div class="card">
+        <!--- Card 2: Dispara-ervilha --->
+        <div id="card2" class="card" style="display: none;">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/9/9c/Repeater1.png/revision/latest?cb=20090521220801"/>
             <h2 id="pshooter">Terreno Vazio</h2>
             <p id="tempopshooter">Plante novas plantas</p>
+            <progress id="barraPshooter" value="0" max="100" style="width: 80%; margin-bottom: 8px;"></progress>
             <button onclick="colher2()">Colher</button>
             <hr/>
             <p>compra de sementes</p>
-            <button onclick="comprar2('disparaervilha')">Dispara ervilha</button>
+            <button onclick="comprar2('disparaervilha')">Dispara-ervilha</button>
         </div>
 
-        <!-- Card 4: Abóbora -->
-        <div class="card">
+        <!--- Card 3: Abóbora --->
+        <div id="card3" class="card" style="display: none;">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/1/10/Squash1.png/revision/latest?cb=20090521221004"/>
             <h2 id="pumpkin">Terreno Vazio</h2>
             <p id="tempopumpkin">Plante novas plantas</p>
+            <progress id="barraPumpkin" value="0" max="100" style="width: 80%; margin-bottom: 8px;"></progress>
             <button onclick="colher3()">Colher</button>
             <hr/>
             <p>compra de sementes</p>
             <button onclick="comprar3('abobora')">Abobora</button>
         </div>
 
-        <!-- Card 5: Chomper -->
-        <div class="card">
+        <!--- Card 4: Chomper --->
+        <div id="card4" class="card" style="display: none;">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/a/a3/Chomper1.png/revision/latest?cb=20090521220057"/>
             <h2 id="carnivora">Terreno Vazio</h2>
             <p id="tempocarnivora">Plante novas plantas</p>
+            <progress id="barraCarnivora" value="0" max="100" style="width: 80%; margin-bottom: 8px;"></progress>
             <button onclick="colher4()">Colher</button>
             <hr/>
             <p>compra de sementes</p>
             <button onclick="comprar4('chomper')">Chomper</button>
         </div>
         
-        <!-- Card 6: Noz Escudo -->
-        <div class="card">
+        <!--- Card 5: Noz Escudo --->
+        <div id="card5" class="card" style="display: none;">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/c/c0/Wall-nut1.png/revision/latest?cb=20090521221605"/>
             <h2 id="escudonoz">Terreno Vazio</h2>
             <p id="temponoz">Plante novas plantas</p>
+            <progress id="barraNoz" value="0" max="100" style="width: 80%; margin-bottom: 8px;"></progress>
             <button onclick="colher5()">Colher</button>
             <hr/>
             <p>compra de sementes</p>
-            <button onclick="comprar5('noz')">Noz Escudo</button>
+            <button onclick="comprar5('noz')">Noz-Escudo</button>
         </div>
 
     </div>
 
     <script>
         let dinheiro = 0
-        addDinheiro(100000000)
+        addDinheiro(100000)
         timer()
 
         let planta_comprada1 = null
@@ -106,7 +111,7 @@
             nome: "Girasol",
             custo: 25,
             lucro: 75,
-            tempo: 3
+            tempo: 10
         } 
 
         let disparaervilha = {
@@ -145,128 +150,174 @@
         // --- COMPRAS ---
         function comprar1(Sol){
             if (planta_comprada1 != null){
-                alert("Voce nao pode comprar agora...")
+                alert("Você já tem uma planta crescendo neste canteiro!")
                 return
             }
             if (dinheiro < girasol.custo){
-                alert("Voce não tem dinheiro o suficiente para a compra")
+                alert("Você não tem dinheiro o suficiente para a compra")
                 return
             }
-            document.getElementById("Sol").innerHTML = girasol.nome
-            document.getElementById("tempoGirasol").innerHTML = girasol.tempo
+
             addDinheiro(-girasol.custo)
             planta_comprada1 = structuredClone(girasol)
+            planta_comprada1.tempoTotal = girasol.tempo
+            
+            document.getElementById("card1").style.display = "block"
+            document.getElementById("Sol").innerHTML = girasol.nome
+            document.getElementById("tempoGirasol").innerHTML = planta_comprada1.tempo + "s"
+            document.getElementById("barraGirasol").value = 0
         }
 
         function comprar2(pshooter){
             if (planta_comprada2 != null){
-                alert("Voce nao pode comprar agora...")
+                alert("Você já tem uma planta crescendo neste canteiro!")
                 return
             }
             if (dinheiro < disparaervilha.custo){
-                alert("Voce não tem dinheiro o suficiente para a compra")
+                alert("Você não tem dinheiro o suficiente para a compra")
                 return
             }
-            document.getElementById("pshooter").innerHTML = disparaervilha.nome
-            document.getElementById("tempopshooter").innerHTML = disparaervilha.tempo
+
             addDinheiro(-disparaervilha.custo)
             planta_comprada2 = structuredClone(disparaervilha)
+            planta_comprada2.tempoTotal = disparaervilha.tempo
+            
+            document.getElementById("card2").style.display = "block"
+            document.getElementById("pshooter").innerHTML = disparaervilha.nome
+            document.getElementById("tempopshooter").innerHTML = planta_comprada2.tempo + "s"
+            document.getElementById("barraPshooter").value = 0
         }
         
         function comprar3(pumpkin){
             if (planta_comprada3 != null){
-                alert("Voce nao pode comprar agora...")
+                alert("Você já tem uma planta crescendo neste canteiro!")
                 return
             }
             if (dinheiro < abobora.custo){
-                alert("Voce não tem dinheiro o suficiente para a compra")
+                alert("Você não tem dinheiro o suficiente para a compra")
                 return
             }
-            document.getElementById("pumpkin").innerHTML = abobora.nome
-            document.getElementById("tempopumpkin").innerHTML = abobora.tempo
+
             addDinheiro(-abobora.custo)
             planta_comprada3 = structuredClone(abobora)
+            planta_comprada3.tempoTotal = abobora.tempo
+            
+            document.getElementById("card3").style.display = "block"
+            document.getElementById("pumpkin").innerHTML = abobora.nome
+            document.getElementById("tempopumpkin").innerHTML = planta_comprada3.tempo + "s"
+            document.getElementById("barraPumpkin").value = 0
         }
 
         function comprar4(carnivora){
             if (planta_comprada4 != null){
-                alert("Voce nao pode comprar agora...")
+                alert("Você já tem uma planta crescendo neste canteiro!")
                 return
             }
             if (dinheiro < chomper.custo){
-                alert("Voce não tem dinheiro o suficiente para a compra")
+                alert("Você não tem dinheiro o suficiente para a compra")
                 return
             }
-            document.getElementById("carnivora").innerHTML = chomper.nome
-            document.getElementById("tempocarnivora").innerHTML = chomper.tempo
+
             addDinheiro(-chomper.custo)
             planta_comprada4 = structuredClone(chomper)
+            planta_comprada4.tempoTotal = chomper.tempo
+            
+            document.getElementById("card4").style.display = "block"
+            document.getElementById("carnivora").innerHTML = chomper.nome
+            document.getElementById("tempocarnivora").innerHTML = planta_comprada4.tempo + "s"
+            document.getElementById("barraCarnivora").value = 0
         }
 
         function comprar5(escudonoz){
             if (planta_comprada5 != null){
-                alert("Voce nao pode comprar agora...")
+                alert("Você já tem uma planta crescendo neste canteiro!")
                 return
             }
             if (dinheiro < noz.custo){
-                alert("Voce não tem dinheiro o suficiente para a compra")
+                alert("Você não tem dinheiro o suficiente para a compra")
                 return
             }
-            document.getElementById("escudonoz").innerHTML = noz.nome
-            document.getElementById("temponoz").innerHTML = noz.tempo
+
             addDinheiro(-noz.custo)
             planta_comprada5 = structuredClone(noz)
+            planta_comprada5.tempoTotal = noz.tempo
+            
+            document.getElementById("card5").style.display = "block"
+            document.getElementById("escudonoz").innerHTML = noz.nome
+            document.getElementById("temponoz").innerHTML = planta_comprada5.tempo + "s"
+            document.getElementById("barraNoz").value = 0
         }
 
-        // --- ATUALIZAÇÃO DO TEMPO ---
+        // --- ATUALIZAÇÃO DO TEMPO E BARRA DE PROGRESSO ---
         function atualizarPlantas(){
-            // Planta 1
+
+            // --- PLANTA 1 ---
             if (planta_comprada1 != null) {
                 if (planta_comprada1.tempo > 0) {
                     planta_comprada1.tempo -= 1
-                    document.getElementById("tempoGirasol").innerHTML = planta_comprada1.tempo
+                    document.getElementById("tempoGirasol").innerHTML = planta_comprada1.tempo + "s"
+                    
+                    let porcentagem = ((planta_comprada1.tempoTotal - planta_comprada1.tempo) / planta_comprada1.tempoTotal) * 100
+                    document.getElementById("barraGirasol").value = porcentagem
                 } else {
-                    document.getElementById("tempoGirasol").innerHTML = "pronto para colher"
+                    document.getElementById("tempoGirasol").innerHTML = "Pronto para colher!"
+                    document.getElementById("barraGirasol").value = 100
                 }
             }
 
-            // Planta 2
+            // --- PLANTA 2 ---
             if (planta_comprada2 != null) {
                 if (planta_comprada2.tempo > 0) {
                     planta_comprada2.tempo -= 1
-                    document.getElementById("tempopshooter").innerHTML = planta_comprada2.tempo
+                    document.getElementById("tempopshooter").innerHTML = planta_comprada2.tempo + "s"
+                    
+                    let porcentagem = ((planta_comprada2.tempoTotal - planta_comprada2.tempo) / planta_comprada2.tempoTotal) * 100
+                    document.getElementById("barraPshooter").value = porcentagem
                 } else {
-                    document.getElementById("tempopshooter").innerHTML = "pronto para colher"
+                    document.getElementById("tempopshooter").innerHTML = "Pronto para colher!"
+                    document.getElementById("barraPshooter").value = 100
                 }
             }
 
-            // Planta 3
+            // --- PLANTA 3 ---
             if (planta_comprada3 != null) {
                 if (planta_comprada3.tempo > 0) {
                     planta_comprada3.tempo -= 1
-                    document.getElementById("tempopumpkin").innerHTML = planta_comprada3.tempo
+                    document.getElementById("tempopumpkin").innerHTML = planta_comprada3.tempo + "s"
+                    
+                    let porcentagem = ((planta_comprada3.tempoTotal - planta_comprada3.tempo) / planta_comprada3.tempoTotal) * 100
+                    document.getElementById("barraPumpkin").value = porcentagem
                 } else {
-                    document.getElementById("tempopumpkin").innerHTML = "pronto para colher"
+                    document.getElementById("tempopumpkin").innerHTML = "Pronto para colher!"
+                    document.getElementById("barraPumpkin").value = 100
                 }
             }
 
-            // Planta 4
+            // --- PLANTA 4 ---
             if (planta_comprada4 != null) {
                 if (planta_comprada4.tempo > 0) {
                     planta_comprada4.tempo -= 1
-                    document.getElementById("tempocarnivora").innerHTML = planta_comprada4.tempo
+                    document.getElementById("tempocarnivora").innerHTML = planta_comprada4.tempo + "s"
+                    
+                    let porcentagem = ((planta_comprada4.tempoTotal - planta_comprada4.tempo) / planta_comprada4.tempoTotal) * 100
+                    document.getElementById("barraCarnivora").value = porcentagem
                 } else {
-                    document.getElementById("tempocarnivora").innerHTML = "pronto para colher"
+                    document.getElementById("tempocarnivora").innerHTML = "Pronto para colher!"
+                    document.getElementById("barraCarnivora").value = 100
                 }
             }
 
-            // Planta 5
+            // --- PLANTA 5 ---
             if (planta_comprada5 != null) {
                 if (planta_comprada5.tempo > 0) {
                     planta_comprada5.tempo -= 1
-                    document.getElementById("temponoz").innerHTML = planta_comprada5.tempo
+                    document.getElementById("temponoz").innerHTML = planta_comprada5.tempo + "s"
+                    
+                    let porcentagem = ((planta_comprada5.tempoTotal - planta_comprada5.tempo) / planta_comprada5.tempoTotal) * 100
+                    document.getElementById("barraNoz").value = porcentagem
                 } else {
-                    document.getElementById("temponoz").innerHTML = "pronto para colher"
+                    document.getElementById("temponoz").innerHTML = "Pronto para colher!"
+                    document.getElementById("barraNoz").value = 100
                 }
             }
         }
@@ -281,81 +332,86 @@
         // --- COLHEITAS ---
         function colher1(){
             if(planta_comprada1 == null){
-                alert("não a plantas para colher")
+                alert("Terreno vazio! Plante uma nova semente.")
                 return
             }
 
             if(planta_comprada1.tempo <= 0){
                 addDinheiro(planta_comprada1.lucro)
                 planta_comprada1 = null
-                document.getElementById("Sol").innerHTML = "Terreno vazio"
-                document.getElementById("tempoGirasol").innerHTML = "Plante noas plantas"
+                document.getElementById("Sol").innerHTML = "Girasol"
+                document.getElementById("tempoGirasol").innerHTML = "Plante outra semente"
+                document.getElementById("barraGirasol").value = 0
             }else{
-                alert("Eita bixo ansioso")
+                alert("Eita bicho ansioso")
             }
         }
 
         function colher2(){
             if(planta_comprada2 == null){
-                alert("não a plantas para colher")
+                alert("Terreno vazio! Plante uma nova semente.")
                 return
             }
 
             if(planta_comprada2.tempo <= 0){
                 addDinheiro(planta_comprada2.lucro)
                 planta_comprada2 = null
-                document.getElementById("pshooter").innerHTML = "Terreno vazio"
-                document.getElementById("tempopshooter").innerHTML = "Plante noas plantas"
+                document.getElementById("pshooter").innerHTML = "Dispara-Ervilha"
+                document.getElementById("tempopshooter").innerHTML = "Plante outra semente"
+                document.getElementById("barraPshooter").value = 0
             }else{
-                alert("Eita bixo ansioso")
+                alert("Eita bicho ansioso")
             }
         }
 
         function colher3(){
             if(planta_comprada3 == null){
-                alert("não a plantas para colher")
+                alert("Terreno vazio! Plante uma nova semente.")
                 return
             }
 
             if(planta_comprada3.tempo <= 0){
                 addDinheiro(planta_comprada3.lucro)
                 planta_comprada3 = null
-                document.getElementById("pumpkin").innerHTML = "Terreno vazio"
-                document.getElementById("tempopumpkin").innerHTML = "Plante noas plantas"
+                document.getElementById("pumpkin").innerHTML = "Abobora"
+                document.getElementById("tempopumpkin").innerHTML = "Plante outra semente"
+                document.getElementById("barraPumpkin").value = 0
             }else{
-                alert("Eita bixo ansioso")
+                alert("Eita bicho ansioso")
             }
         }
 
         function colher4(){
             if(planta_comprada4 == null){
-                alert("não a plantas para colher")
+                alert("Terreno vazio! Plante uma nova semente.")
                 return
             }
 
             if(planta_comprada4.tempo <= 0){
                 addDinheiro(planta_comprada4.lucro)
                 planta_comprada4 = null
-                document.getElementById("carnivora").innerHTML = "Terreno vazio"
-                document.getElementById("tempocarnivora").innerHTML = "Plante noas plantas"
+                document.getElementById("carnivora").innerHTML = "Chomper"
+                document.getElementById("tempocarnivora").innerHTML = "Plante outra semente"
+                document.getElementById("barraCarnivora").value = 0
             }else{
-                alert("Eita bixo ansioso")
+                alert("Eita bicho ansioso")
             }
         }
 
         function colher5(){
             if(planta_comprada5 == null){
-                alert("não a plantas para colher")
+                alert("Terreno vazio! Plante uma nova semente.")
                 return
             }
 
             if(planta_comprada5.tempo <= 0){
                 addDinheiro(planta_comprada5.lucro)
                 planta_comprada5 = null
-                document.getElementById("escudonoz").innerHTML = "Terreno vazio"
-                document.getElementById("temponoz").innerHTML = "Plante noas plantas"
+                document.getElementById("escudonoz").innerHTML = "Noz-Escudo"
+                document.getElementById("temponoz").innerHTML = "Plante outra semente"
+                document.getElementById("barraNoz").value = 0
             }else{
-                alert("Eita bixo ansioso")
+                alert("Eita bicho ansioso")
             }
         }
     </script>
