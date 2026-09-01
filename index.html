@@ -37,7 +37,7 @@
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/8/87/Giant_Sunflower1.png/revision/latest?cb=20250305125505"/>
             <h2 id="Sol">planta</h2>
             <p  id="tempoGirasol">Tempo restante</p>
-            <button>Colher</button>
+            <button onclick="colher1()">Colher</button>
             <hr/>
             <p>compra de sementes</p>
             <button onclick="comprar1('girasol')">Girasol</button>
@@ -47,7 +47,7 @@
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/9/9c/Repeater1.png/revision/latest?cb=20090521220801"/>
             <h2 id="pshooter">planta</h2>
             <p id="tempopshooter">Tempo restante</p>
-            <button>Colher</button>
+            <button onclick="colher2()">Colher</button>
             <hr/>
             <p>compra de sementes</p>
             <button onclick="comprar2('disparaervilha')">Dispara ervilha</button>
@@ -101,7 +101,7 @@
             nome: "Girasol",
             custo: 25,
             lucro: 75,
-            tempo: 10
+            tempo: 3
         } 
 
         let disparaervilha = {
@@ -203,7 +203,7 @@
         
         }
 
-                function comprar4(carnivora){
+        function comprar4(carnivora){
 
             if (planta_comprada4 != null){
                 alert("Voce nao pode comprar agora...")
@@ -224,7 +224,7 @@
         
         }
 
-                function comprar5(escudonoz){
+        function comprar5(escudonoz){
 
             if (planta_comprada5 != null){
                 alert("Voce nao pode comprar agora...")
@@ -246,7 +246,30 @@
         }
 
         function atualizarPlantas(){
+            if(planta_comprada1 == null){
+                return
+            }
             
+            if(planta_comprada1.tempo <= 0){
+                document.getElementById("tempoGirasol").innerHTML = "pronto para colher"
+                return
+            }
+            
+            planta_comprada1.tempo -= 1
+            document.getElementById("tempoGirasol").innerHTML = planta_comprada1.tempo
+
+            
+            if(planta_comprada2 == null){
+                return
+            }
+            
+            if(planta_comprada2.tempo <= 0){
+                document.getElementById("tempopshooter").innerHTML = "pronto para colher"
+                return
+            }
+            
+            planta_comprada2.tempo -= 1
+            document.getElementById("tempopshooter").innerHTML = planta_comprada2.tempo
         }
 
         function timer(){
@@ -259,6 +282,39 @@
 
         }
 
+        function colher1(){
+            if(planta_comprada1 == null){
+                alert("não a plantas para colher")
+                return
+            }
+
+            if(planta_comprada1.tempo <= 0){
+                addDinheiro(planta_comprada1.lucro)
+                planta_comprada1 = null
+            document.getElementById("Sol").innerHTML = "Terreno vazio"
+            document.getElementById("tempoGirasol").innerHTML = "Plante noas plantas"
+
+            }else{
+                alert("Eita bixo ansioso")
+            }
+        }
+
+        function colher2(){
+            if(planta_comprada2 == null){
+                alert("não a plantas para colher")
+                return
+            }
+
+            if(planta_comprada2.tempo <= 0){
+                addDinheiro(planta_comprada2.lucro)
+                planta_comprada2 = null
+            document.getElementById("pshooter").innerHTML = "Terreno vazio"
+            document.getElementById("tempopshooter").innerHTML = "Plante noas plantas"
+
+            }else{
+                alert("Eita bixo ansioso")
+            }
+        }
     </script>
 
 </body>
