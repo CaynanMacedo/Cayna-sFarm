@@ -35,62 +35,66 @@
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/8/87/Giant_Sunflower1.png/revision/latest?cb=20250305125505"/>
-            <h2 id="giraSol">planta</h2>
+            <h2 id="Sol">planta</h2>
             <p  id="tempoGirasol">Tempo restante</p>
             <button>Colher</button>
             <hr/>
             <p>compra de sementes</p>
-            <button onclick="comprar('girasol')">Girasol</button>
+            <button onclick="comprar1('girasol')">Girasol</button>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/9/9c/Repeater1.png/revision/latest?cb=20090521220801"/>
-            <h2>planta</h2>
-            <p>Tempo restante</p>
+            <h2 id="pshooter">planta</h2>
+            <p id="tempopshooter">Tempo restante</p>
             <button>Colher</button>
             <hr/>
             <p>compra de sementes</p>
-            <button>Dispara ervilha</button>
+            <button onclick="comprar2('disparaervilha')">Dispara ervilha</button>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/1/10/Squash1.png/revision/latest?cb=20090521221004"/>
-            <h2>planta</h2>
-            <p>Tempo restante</p>
+            <h2 id="pumpkin">planta</h2>
+            <p id="tempopumpkin">Tempo restante</p>
             <button>Colher</button>
             <hr/>
             <p>compra de sementes</p>
-            <button>Abobora</button>
+            <button onclick="comprar3('abobora')">Abobora</button>
         </div>
 
         <div class="card">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/a/a3/Chomper1.png/revision/latest?cb=20090521220057"/>
-            <h2>planta</h2>
-            <p>Tempo restante</p>
+            <h2 id="carnivora">planta</h2>
+            <p id="tempocarnivora">Tempo restante</p>
             <button>Colher</button>
             <hr/>
             <p>compra de sementes</p>
-            <button>Chomper</button>
+            <button onclick="comprar4('chomper')">Chomper</button>
         </div>
         
         <div class="card">
             <img src="https://static.wikia.nocookie.net/plantsvszombies/images/c/c0/Wall-nut1.png/revision/latest?cb=20090521221605"/>
-            <h2>planta</h2>
-            <p>Tempo restante</p>
+            <h2 id="escudonoz">planta</h2>
+            <p id="temponoz">Tempo restante</p>
             <button>Colher</button>
             <hr/>
             <p>compra de sementes</p>
-            <button>Noz Escudo</button>
+            <button onclick="comprar5('noz')">Noz Escudo</button>
         </div>
 
     </div>
 
     <script>
         let dinheiro = 0
-        addDinheiro(100)
+        addDinheiro(100000000)
         timer()
 
-        let planta_comprada = null 
+        let planta_comprada1 = null
+        let planta_comprada2 = null
+        let planta_comprada3 = null
+        let planta_comprada4 = null
+        let planta_comprada5 = null
         
         
         let girasol = {
@@ -136,9 +140,9 @@
             document.getElementById("textoDinheiro").innerHTML = dinheiro
         }
 
-        function comprar(giraSol){
+        function comprar1(Sol){
 
-            if (planta_comprada != null){
+            if (planta_comprada1 != null){
                 alert("Voce nao pode comprar agora...")
                 return
             }
@@ -148,17 +152,101 @@
             return
             }
 
-            document.getElementById("giraSol").innerHTML = girasol.nome
+            document.getElementById("Sol").innerHTML = girasol.nome
             document.getElementById("tempoGirasol").innerHTML = girasol.tempo
 
             addDinheiro(-girasol.custo)
             
-            planta_comprada = structuredClone(girasol)       //deep clone 
+            planta_comprada1 = structuredClone(girasol)       //deep clone 
+        
+        }
+
+        function comprar2(pshooter){
+
+            if (planta_comprada2 != null){
+                alert("Voce nao pode comprar agora...")
+                return
+            }
+
+            if (dinheiro < disparaervilha.custo){
+            alert("Voce não tem dinheiro o suficiente para a compra")
+            return
+            }
+
+            document.getElementById("pshooter").innerHTML = disparaervilha.nome
+            document.getElementById("tempopshooter").innerHTML = disparaervilha.tempo
+
+            addDinheiro(-disparaervilha.custo)
+            
+            planta_comprada2 = structuredClone(disparaervilha)       //deep clone 
+        
+        }
+        
+        function comprar3(pumpkin){
+
+            if (planta_comprada3 != null){
+                alert("Voce nao pode comprar agora...")
+                return
+            }
+
+            if (dinheiro < abobora.custo){
+            alert("Voce não tem dinheiro o suficiente para a compra")
+            return
+            }
+
+            document.getElementById("pumpkin").innerHTML = abobora.nome
+            document.getElementById("tempopumpkin").innerHTML = abobora.tempo
+
+            addDinheiro(-abobora.custo)
+            
+            planta_comprada3 = structuredClone(abobora)       //deep clone 
+        
+        }
+
+                function comprar4(carnivora){
+
+            if (planta_comprada4 != null){
+                alert("Voce nao pode comprar agora...")
+                return
+            }
+
+            if (dinheiro < chomper.custo){
+            alert("Voce não tem dinheiro o suficiente para a compra")
+            return
+            }
+
+            document.getElementById("carnivora").innerHTML = chomper.nome
+            document.getElementById("tempocarnivora").innerHTML = chomper.tempo
+
+            addDinheiro(-chomper.custo)
+            
+            planta_comprada4 = structuredClone(chomper)       //deep clone 
+        
+        }
+
+                function comprar5(escudonoz){
+
+            if (planta_comprada5 != null){
+                alert("Voce nao pode comprar agora...")
+                return
+            }
+
+            if (dinheiro < noz.custo){
+            alert("Voce não tem dinheiro o suficiente para a compra")
+            return
+            }
+
+            document.getElementById("escudonoz").innerHTML = noz.nome
+            document.getElementById("temponoz").innerHTML = noz.tempo
+
+            addDinheiro(-noz.custo)
+            
+            planta_comprada5 = structuredClone(noz)       //deep clone 
         
         }
 
         function atualizarPlantas(){
-
+            
         }
 
         function timer(){
